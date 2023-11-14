@@ -63,7 +63,7 @@ const  http = axios.create({
 
 const Enter = e => {
     console.log(data)
-        http.post('/sign-up', data)
+        http.post('/auth/sign-up', data)
         .then(data => {
             if(!data.data.message){
                 console.log(data)

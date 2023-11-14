@@ -33,6 +33,8 @@ body{
 .description_block{
   background-image: url('./Media/Image/картинка\ для\ максима\ \(1\).png');
   background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 70% 30%;
 }
 
 #general{
@@ -314,7 +316,7 @@ body{
   background-image: url('./Media/Image/regisrtation.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: 30%;
+  background-position: 40%;
 }
 
 .form{
@@ -331,7 +333,7 @@ body{
 }
 
 .form_container{
-  padding-left: 63% ;
+  padding-left: 55% ;
 }
 
 .error {
