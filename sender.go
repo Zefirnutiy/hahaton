@@ -4,11 +4,11 @@ import (
 	"crypto/tls"
 	"os"
 
+
 	"gopkg.in/gomail.v2"
 )
 
 func Sender (recipients []string, msg string) error {
-
 	for _, recipient := range recipients {
 
 		m := gomail.NewMessage()
