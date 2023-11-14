@@ -1,32 +1,35 @@
 package main
 
 import (
-	"net/smtp"
+	"crypto/tls"
 	"os"
+
+	"gopkg.in/gomail.v2"
 )
 
+func Sender (recipients []string, msg string) error {
 
-func Sender() {
+	for _, recipient := range recipients {
 
-    from := "peschinkaumorya@gmail.com"
-    password := os.Getenv("GOOGLE_PAS")
+		m := gomail.NewMessage()
+		
+		m.SetHeader("From", "stellox84@gmail.com")
+		
+		m.SetHeader("To", recipient)
+		
+		m.SetHeader("Subject", "IT форум 'Супер гик'")
+		
+		m.SetBody("text/plain", msg)
+		d := gomail.NewDialer("smtp.gmail.com", 587, "stellox84@gmail.com", os.Getenv("GOOGLE_PAS"))
+		
+		d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
+		
+		err := d.DialAndSend(m);
+		if err != nil {
+			return err
+		}
 
-    toEmailAddress := "stellox84@gmail.com"
-    to := []string{toEmailAddress}
-
-    host := "smtp.gmail.com"
-    port := "587"
-    address := host + ":" + port
-
-    subject := "Subject: This is the subject of the mail\n"
-    body := "This is the body of the mail"
-    message := []byte(subject + body)
-
-    auth := smtp.PlainAuth("", from, password, host)
-
-    err := smtp.SendMail(address, auth, from, to, message)
-    if err != nil {
-        panic(err)
-    }
-
-}
+	}
+  
+	return nil
+  }

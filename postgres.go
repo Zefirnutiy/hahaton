@@ -41,3 +41,9 @@ func CreateUser(user User) error {
 
 	return err
 }
+
+func CreateMessage(msg Message) error {
+	_, err := conn.Exec(context.Background(), `INSERT INTO public.message("userId", text) VALUES($1, $2)`, msg.UserId, msg.Text)
+
+	return err
+}
