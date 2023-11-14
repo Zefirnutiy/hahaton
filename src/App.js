@@ -4,10 +4,18 @@ import Header from './Component/UI/Header';
 import SuperGeek from './Media/Image/СУПЕР ГИК.svg';
 import Button from './Component/UI/Button.jsx'
 import Form from './Component/UI/Form/Form.jsx'
+import { useState } from 'react';
 // import BgAnimated from './Component/UI/BgAnimated.jsx';
 function App() {
+ const [scroll, setScroll] = useState(false)
+
+  const ScrollHendler = e => {
+    if (window.scrollY == 1800){
+      setScroll(true)
+    }
+  }
   return (
-    <div className="App">
+    <div className="App" onScroll={ScrollHendler()}>
     {/* <BgAnimated /> */}
       <Header className='header'/>
         <section id='general'>
@@ -72,9 +80,9 @@ function App() {
         <section id="possibilities">
         <h1 className='title section possibilities_title left'>ВОЗМОЖНОСТЬ ПОЛУЧИТЬ</h1>
           <div className='possibilities_container'>
-            <div className='possibilities_plash text plash'>Возможность трудоустройства в ведущих IT-компаниях страны </div>
-            <div className='possibilities_plash text plash'>Использование проектов в портфолио и резюме</div>
-            <div className='possibilities_plash text plash'>Ценные подарки от спонсоров</div>
+            <div className={ !scroll ? 'possibilities_plash text plash' :'possibilities_plash text plash anim'}>Возможность трудоустройства в ведущих IT-компаниях страны </div>
+            <div className={ !scroll ? 'possibilities_plash text plash' :'possibilities_plash text plash anim'}>Использование проектов в портфолио и резюме</div>
+            <div className={ !scroll ? 'possibilities_plash text plash' :'possibilities_plash text plash anim'}>Ценные подарки от спонсоров</div>
           </div>
         </section>
         </section>

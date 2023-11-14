@@ -18,6 +18,7 @@ useEffect(()=>{
 
 const [phone, setPhone] = useState(true)
 const [email, setEmail] = useState(true)
+const [error, setError] = useState(true)
 const [message, setMessage] = useState(null)
 
 const HandleChange = e =>{
@@ -65,23 +66,24 @@ const Enter = e => {
     console.log(data)
         http.post('/auth/sign-up', data)
         .then(data => {
-            if(!data.data.message){
+            if(data.data){
                 console.log(data)
                 sessionStorage.clear()
-                alert('Вы зарегестрированы')
+                setError(true)
             }
-
             else{
                 setMessage(data.data.message)
+                setError(false)
             }
                 console.log('ответ: ', data)
         })
         .catch((er) => {
-            console.log(er)
+            alert(er)
         })
     } 
     return (
         <form className='form'>
+            <div className={error ? 'msg' : 'msg no_correct'}>Пользователь уже существует!</div>
             <InputText required placeholder={'Зубенко Михаил Петрович'} InputName={'name'} className='input_container' funcOnChang={HandleChange}>ФИО</InputText>
             <InputText required placeholder={'8-996-557-34-56'} InputName={'phone'} ClassName={!phone && 'no_correct '} funcOnChang={phoneIsValid}>Номер телефона</InputText>
             <InputText required placeholder={'zubenk@yandex.ru'}  InputName={'email'} ClassName={!email && 'no_correct'} funcOnChang={emailIsValid}>E-mail</InputText>
