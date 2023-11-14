@@ -54,7 +54,7 @@ func signUp(ctx *gin.Context){
 		ctx.JSON(http.StatusInternalServerError, nil)
 	}
 
-	ctx.JSON(http.StatusOK, user)
+	ctx.JSON(http.StatusOK, nil)
 	return
 }
 
