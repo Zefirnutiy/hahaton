@@ -29,28 +29,34 @@ function App() {
           
           <Button btnClass ={'inline'}></Button>
         </section> 
-        
+        <section className='description_block'>
         <section id='description'>
-          <h1 className='title section'>Конкурс для молодых и талантливых</h1>
-
-          <div className='description_container'>
-              <p className='title_montserrat little'>IT ФОРУМ</p>
-              <p className='text description'>
-                Проводится с целью выявления и поддержки перспективных программистов и инженеров.
-              </p>
-            </div>
+            <h1 className='title section'>Конкурс для молодых и талантливых</h1>
+            <div className='flex_description'>  
+              <div className='stage_info'>
+                <h1 className='title subtitle left'>1 ЭТАП</h1>
+                  <p className='text'> 
+                  Участники должны решить задачи по программированию на время.
+                </p>
+                  <p className='text'>
+                  Задачи могут быть разной сложности и могут включать в себя алгоритмы, структуры данных, работу с базами данных и другие темы.        
+                  </p>
+              </div>
+              <div className='description_container'>
+                  <p className='title description_title right'>IT ФОРУМ</p>
+                  <p className='text description'>
+                    Проводится с целью выявления и поддержки перспективных программистов и инженеров.
+                  </p>
+              </div>
+          </div>
 
           <div className='flex_description'>
-            <div className='stage_info'>
-              <h1 className='title subtitle left'>1 ЭТАП</h1>
-              <p className='text'> 
-                Участники должны решить задачи по программированию на время.
-              </p>
-              <p className='text'>
-                Задачи могут быть разной сложности и могут включать в себя алгоритмы, структуры данных, работу с базами данных и другие темы.        
+            <div className='description_container'>
+              <p className='title description_title left'>СУПЕР ГИК</p>
+              <p className='text description left'>
+               Это отличная возможность для обмена опытом, обучения новым технологиям и общения с единомышленниками.
               </p>
             </div>
-
             <div className='stage_info'>
             <h1 className='title subtitle left'>2 ЭТАП</h1>
             <p className='text'>
@@ -62,14 +68,17 @@ function App() {
             </div>
           </div>
         </section>
+
         <section id="possibilities">
-        <h1 className='title section'>ВОЗМОЖНОСТЬ ПОЛУЧИТЬ</h1>
+        <h1 className='title section possibilities_title left'>ВОЗМОЖНОСТЬ ПОЛУЧИТЬ</h1>
           <div className='possibilities_container'>
             <div className='possibilities_plash text plash'>Возможность трудоустройства в ведущих IT-компаниях страны </div>
             <div className='possibilities_plash text plash'>Использование проектов в портфолио и резюме</div>
             <div className='possibilities_plash text plash'>Ценные подарки от спонсоров</div>
           </div>
         </section>
+        </section>
+        
       <section id='programm'>
       <h1 className='title section'>Программа</h1>
         <div className='programm_container'>
@@ -110,9 +119,7 @@ function App() {
           <Form />
         </div>
       </section>
-      <Footer>
-        
-      </Footer>
+      <Footer />
     </div>
   );
 }

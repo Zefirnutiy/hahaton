@@ -26,7 +26,7 @@ const HandleChange = e =>{
     sessionStorage.setItem(e.target.name, e.target.value)
 }
 const emailIsValid = e =>{
-    if(!emailPattern.test(e.target.value) && e.target.value != ''){
+    if(!emailPattern.test(e.target.value) && e.target.value !== ''){
         setEmail(false)
     }
     else{
@@ -63,13 +63,11 @@ const  http = axios.create({
 
 const Enter = e => {
     console.log(data)
-    e.preventDefault()
         http.post('/sign-up', data)
         .then(data => {
             if(!data.data.message){
                 console.log(data)
                 sessionStorage.clear()
-                window.location.href = '/' 
                 alert('Вы зарегестрированы')
             }
 
@@ -84,17 +82,17 @@ const Enter = e => {
     } 
     return (
         <form className='form'>
-            <InputText placeholder={'Трахов Игорь Владимирович'} InputName={'name'} className='input_container' funcOnChang={HandleChange}>ФИО</InputText>
-            <InputText placeholder={'8-996-557-34-56'} InputName={'phone'} ClassName={!phone && 'no_correct '} funcOnChang={phoneIsValid}>Номер телефона</InputText>
-            <InputText placeholder={'trahov@yandex.ru'}  InputName={'email'} ClassName={!email && 'no_correct'} funcOnChang={emailIsValid}>E-mail</InputText>
+            <InputText required placeholder={'Зубенко Михаил Петрович'} InputName={'name'} className='input_container' funcOnChang={HandleChange}>ФИО</InputText>
+            <InputText required placeholder={'8-996-557-34-56'} InputName={'phone'} ClassName={!phone && 'no_correct '} funcOnChang={phoneIsValid}>Номер телефона</InputText>
+            <InputText required placeholder={'zubenk@yandex.ru'}  InputName={'email'} ClassName={!email && 'no_correct'} funcOnChang={emailIsValid}>E-mail</InputText>
             
             <div className='checkbox_container'>
-                <input type='checkbox' className='checkbox' id="checkbox"  />
+                <input required type='checkbox' className='checkbox' id="checkbox" />
                 <label className='checkbox_container' for='checkbox'>Согласие на обработку данных</label>
             </div>
 
-            <div className="button_form_bottom"  onClick={Enter} >
-                <button className='btn white_fill' disabled={!phone && !email}>ЗАРЕГИСТРИРОВАТЬСЯ</button>
+            <div className="button_form_bottom">
+                <button className='btn white_fill' onClick={Enter} disabled={phone && email} type='submit'>ЗАРЕГИСТРИРОВАТЬСЯ</button>
             </div>
         </form>
     );
